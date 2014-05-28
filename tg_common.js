@@ -1,15 +1,46 @@
-(function (window) {
-    var TG = function(id) {
-        return new TG.fn.init(id);
+(function (window, output) {
+    var TG = function(s) {
+        return new TG.fn.init(s);
     };
     TG.fn = {
-        init: function(el) {
-            if (typeof el == 'string') {
-                this.merge(this, document.querySelectorAll(el));
-            } else if (el.length) {
-                this.merge(this, el);
-            } else if(el.nodeType) {
-                this[0] = el ;
+        init: function(s) {
+            if (!s) {
+                return this ;
+            }
+            //handle #id, tag.cls
+            if (typeof s == 'string') {
+                //todo
+                if (!document.querySelectorAll) {
+                    this.merge(this, document.querySelectorAll(s));
+                }else {
+                    if (s.indexOf('#') +1) {
+                        this[0] = document.getElementById(this.trim(s).replace('#', ''));
+                        this.length = 1;
+                    //tag.class , tag, .class
+                    }else {
+                        var rcls = /^(?:([^.]+)|(.+)?\.(.+))$/;
+                        var m = rcls.exec(s);
+                        //console.log('x',m);
+                        if (!m) {
+                            return this ;
+                        }
+                        if (m[1]) {
+                            this.merge(this, document.getElementsByTagName(m[1]))
+                        }else if (m[3]){
+                            var tag = m[2] || '*' ;
+                            var el = document.getElementsByTagName(tag),
+                                ret = [];
+                            for (var i = 0, k ; k = el[i] ; i++ ) {
+                                (k.className.indexOf(this.trim(m[3])) > -1) && ret.push(k);
+                            }
+                            this.merge(this, ret);
+                        }
+                    }
+                }
+            }else if (s.length) {
+                this.merge(this, s);
+            }else if(s.nodeType) {
+                this[0] = s ;
                 this.length = 1;
             }
             return this;
@@ -134,5 +165,7 @@
         _head.appendChild( _script );
     },
 
-    window.TG = TG;
+
+    output = output || 'TG' ;
+    window[output] = TG ;
 })(window);
