@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>TGcommon Tests</title>
+<script src="../tgcommon.min.js" type="text/javascript"></script>
+<style type="text/css" media="screen">
+    * {margin:0;padding:0;list-style:none;}
+    body {font:400 14px/25px verdana;color:#333;padding:20px;}
+    h1 {font:400 18px/50px "Microsoft YaHei";}
+    .red {color:#f50 ;}
+    .pink {color:pink;}
+    .blue {color:#69f;}
+    .green {color:green;}
+    .ret {color:green;}
+</style>
+</head>
+<body>
+
+<h1>TGCommon Tests</h1>
+<h3 class="subtit cls" >sub title</h3>
+<p class="cls mid">p.cls content</p>
+<p class="cls">p.cls content</p>
+<p class="red">red 2 blue</p>
+<ul>
+    <li>- list item </li>
+    <li class="mid">- list item </li>
+    <li>- list item </li>
+</ul>
+<br />
+<a target="_blank" class="linkA" href="#">.linkA content</a><br />
+<a target="_blank" class="linkB" href="#">.linkB content</a>
+
+<br />
+<br />
+<div id="ret" class="ret"></div>
+
+<script type="text/javascript">
+    //for test
+    var $ = TG ;
+
+    //test removeClass AND addClass
+    $("p.red").removeClass('red').addClass('blue');
+    for (var i = 0, k ; k = $('p.blue')[i] ; i++ ) {
+        k.innerHTML += ', the color should be blue';
+    }
+
+    //test tag selector
+    $("a").addClass('red');
+    for (var i = 0, k ; k = $('a')[i] ; i++ ) {
+        k.innerHTML += ', the color should be red';
+    }
+
+    //test tag.class selector
+    $("li.mid").addClass('pink')
+    for (var i = 0, k ; k = $('li.mid')[i] ; i++ ) {
+        k.innerHTML += ', the color should be pink';
+    }
+
+    //test .class selector
+    $(".cls").addClass('green');
+    for (var i = 0, k ; k = $('.cls')[i] ; i++ ) {
+        k.innerHTML += ', the color should be green';
+    }
+
+    $.ready(function () {
+        $('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 1 <br>'   ;
+    })
+    $.ready(function () {
+        $('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 2 <br>'   ;
+    })
+    $.addEvent(window, 'load', function () {
+        $('#ret')[0].innerHTML += 'window loaded'   ;
+    })
+
+</script>
+</body>

@@ -1,18 +1,19 @@
 TGcommon
 ========
 
-like jquery syntax ,but donot wanna inlucde a big jquery lib ? here is a mini useful javascript lib for you.
+A mini Javascript lib including some useful method , jQuery compatible syntax and work well in majority browser , feel free to use it. 
 
-## Code Size
+## Size
 
-- Original Size: 1.7KB
-- Compiled Size: 1.23KB
+- Original Size: 8.3KB
+- Compiled Size: 3.4KB
 
-## Browser Support and Dependancy
+## Browser Support
 
-- Chrome Latest
-- Firefox Latest
-- IE6+
+- Chrome 35.0.1916.114
+- Firefox 29.0.1
+- Opera 18.0
+- IE6-10
 
 ## Supported Methods
 
