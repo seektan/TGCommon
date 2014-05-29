@@ -3,7 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <title>TGcommon Tests</title>
-<script src="../tgcommon.min.js" type="text/javascript"></script>
+<script src="../tgcommon.js" type="text/javascript"></script>
 <style type="text/css" media="screen">
     * {margin:0;padding:0;list-style:none;}
     body {font:400 14px/25px verdana;color:#333;padding:20px;}
@@ -36,7 +36,7 @@
 <div id="ret" class="ret"></div>
 
 <script type="text/javascript">
-    //for test
+    //just for test
     var $ = TG ;
 
     //test removeClass AND addClass
@@ -63,12 +63,16 @@
         k.innerHTML += ', the color should be green';
     }
 
-    $.ready(function () {
+    $(function () {
         $('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 1 <br>'   ;
-    })
-    $.ready(function () {
+    });
+    $(function () {
         $('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 2 <br>'   ;
-    })
+    });
+    $(function () {
+        $('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 3 <br>'   ;
+    });
+
     $.addEvent(window, 'load', function () {
         $('#ret')[0].innerHTML += 'window loaded'   ;
     })
