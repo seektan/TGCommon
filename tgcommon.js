@@ -136,6 +136,46 @@
     };
     TG.fn.init.prototype = TG.fn;
 
+    TG.extend({
+        isIE6: !-[1,] && !window.XMLHttpRequest 
+
+        ,addEvent: function (target, eventType, handler) {
+            if (target.addEventListener){
+                this.addEvent = function(target, eventType, handler){
+                    target.addEventListener(eventType, handler, false);
+                };
+            } else {
+                this.addEvent = function(target, eventType, handler){
+                    target.attachEvent("on" + eventType, handler);
+                };
+            }
+            this.addEvent(target, eventType, handler);
+        }
+        ,loadjs: function (url, cb, c) {
+            var _head = document.getElementsByTagName("head")[0] || document.documentElement,
+                _script = document.createElement("script");
+            _script.src = url;	
+            c && (_script.charset = c );
+            if (cb) {
+                if (_script.addEventListener) {
+                    _script.addEventListener('load', cb, false);
+                } else {
+                    _script.onreadystatechange = function() {
+                        if (_script.readyState in {loaded: 1, complete: 1}) {
+                            _script.onreadystatechange = null;
+                            cb();
+                        }
+                    };
+                }
+            }
+            _head.appendChild( _script );
+        }
+        ,ready :function (fn) {
+            typeof _ready != 'undefined' && _ready(fn);
+        }
+    });
+
+    //if you think DOMReady is unnecessary, you can remove the '_ready' definition
     var _ready = (function () {
         var readyList = null;
         var isFire = false;
@@ -202,45 +242,6 @@
             }
         } ;
     })();    
-
-    TG.extend({
-        isIE6: !-[1,] && !window.XMLHttpRequest 
-
-        ,addEvent: function (target, eventType, handler) {
-            if (target.addEventListener){
-                this.addEvent = function(target, eventType, handler){
-                    target.addEventListener(eventType, handler, false);
-                };
-            } else {
-                this.addEvent = function(target, eventType, handler){
-                    target.attachEvent("on" + eventType, handler);
-                };
-            }
-            this.addEvent(target, eventType, handler);
-        }
-        ,loadjs: function (url, cb, c) {
-            var _head = document.getElementsByTagName("head")[0] || document.documentElement,
-                _script = document.createElement("script");
-            _script.src = url;	
-            c && (_script.charset = c );
-            if (cb) {
-                if (_script.addEventListener) {
-                    _script.addEventListener('load', cb, false);
-                } else {
-                    _script.onreadystatechange = function() {
-                        if (_script.readyState in {loaded: 1, complete: 1}) {
-                            _script.onreadystatechange = null;
-                            cb();
-                        }
-                    };
-                }
-            }
-            _head.appendChild( _script );
-        }
-        ,ready :function (fn) {
-            _ready(fn);
-        }
-    });
 
     window[output || 'TG'] = TG ;
 })(window, 'TG');

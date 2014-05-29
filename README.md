@@ -30,7 +30,10 @@ then you can use `TG` get DOM Object or do something directly:
 
 ## Custom "TG"
 
-Don't wanna TG ? it is OK, you can use another keyword : open `tgcommon.js`, move to the bottom of file, change the second argument (default: 'TG') to whatever you like. such as '$$'. And then you can use `$$(...)` instead of `TG(...)`
+Don't wanna TG ? it is OK, you can use another keyword :
+
+- open `tgcommon.js` or `tgcommon.min.js` and move to the bottom of the file
+- change the second argument (default: 'TG') to whatever you like. such as '$$'. And then you can use `$$(...)` instead of `TG(...)`
 
 ## Size
 
