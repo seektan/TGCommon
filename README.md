@@ -41,10 +41,10 @@ then you can use `TG` get DOM Object or do something directly:
 - removeClass()
 - show()
 - hide()
-- TG.isIE6 //static method
-- TG.addEvent //static method
-- TG.loadjs //static method
-- TG.ready //static method
+- TG.isIE6
+- TG.addEvent(window, 'load', callback)
+- TG.loadjs(url[, callback[, charset]])
+- TG.ready(fn)
 
 ## Browser Support
 
