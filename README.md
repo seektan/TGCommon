@@ -1,4 +1,4 @@
-TGcommon
+TGCommon
 ========
 
 A mini Javascript lib including some useful method , jQuery compatible syntax and work well in majority browser , feel free to use it. 
