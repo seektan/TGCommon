@@ -11,13 +11,9 @@ First include it in your webpage
 
 then you can use `TG` get DOM Object or do something directly:
 
-    TG('#id');
-
     TG('#id').addClass('clsA clsB').removeClass('clsB') ;
 
     TG('tag.classA').show();
-
-    TG('tag.classB').hide();
 
     //you can use TG.ready(fn) too
     TG(function(){
@@ -28,24 +24,15 @@ then you can use `TG` get DOM Object or do something directly:
 
     TG.addEvent(window, 'load', callback);
 
-## Custom "TG"
+## Supported Selector
 
-Don't wanna TG ? it is OK, you can use another keyword :
-
-- open `tgcommon.js` or `tgcommon.min.js` and move to the bottom of the file
-- change the second argument (default: 'TG') to whatever you like. such as '$$'. And then you can use `$$(...)` instead of `TG(...)`
-
-## Size
-
-- Original Size: 8.3KB
-- Compiled Size: 3.4KB
-
-## Browser Support
-
-- Chrome 35.0.1916.114
-- Firefox 29.0.1
-- Opera 18.0
-- IE6-10
+- TG('#id')
+- TG('tag')
+- TG('.class')
+- TG('tag.class')
+- TG(document.getElementById('id')) //single DOM Object
+- TG(document.querySelectorAll('tag')) //nodeListObject
+- TG(function) //shortcut for TG.ready
 
 ## Supported Methods
 
@@ -54,10 +41,24 @@ Don't wanna TG ? it is OK, you can use another keyword :
 - removeClass()
 - show()
 - hide()
-- TG.isIE6
-- TG.addEvent
-- TG.loadjs
-- TG.ready
+- TG.isIE6 //static method
+- TG.addEvent //static method
+- TG.loadjs //static method
+- TG.ready //static method
+
+## Browser Support
+
+- Chrome 35.0.1916.114
+- Firefox 29.0.1
+- Opera 18.0
+- IE6-10
+
+## Custom "TG"
+
+Don't wanna TG ? it is OK, you can use another keyword :
+
+- open `tgcommon.js` or `tgcommon.min.js` and move to the bottom of the file
+- change the second argument (default: 'TG') to whatever you like. such as '$$'. And then you can use `$$(...)` instead of `TG(...)`
 
 ## MIT License
 
