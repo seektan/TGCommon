@@ -73,8 +73,10 @@
             first.length = i;
             return first;
         }
+
         ,trim: function (v) {
-            return v && v.replace(/(^\s+)|(\s+$)/g, '') ;
+            v = v || '';
+            return !!String.prototype.trim && v.trim() || v.replace(/(^\s+)|(\s+$)/g, '') ;
         }
 
         ,hasClass:function (v) {
@@ -90,33 +92,31 @@
         }
         ,addClass: function(v) {
             var i, k, l = this.length;
-            var classNames = (this.trim(v) || "").split(/\s+/);
+            v = this.trim(v);
+
             for (i = 0; i < l; i++ ) {
                 k = this[i];
-                var className = " " + k.className + " ",
-                    setClass = k.className;
-
-                for (var c = 0, cl = classNames.length; c < cl; c++) {
-                    if (className.indexOf(" " + classNames[c] + " ") < 0) {
-                        setClass += " " + classNames[c];
+                if (k.classList) {
+                    k.classList.add(v);
+                }else {
+                    if ((' ' + k.className + ' ').indexOf(' ' + v + ' ') < 0) {
+                        k.className = this.trim(k.className + ' ' + v);
                     }
                 }
-                k.className = this.trim(setClass);
             }
 
             return this;
         }
         ,removeClass: function(v) {
             var i, k, l = this.length;
-            var classNames = (this.trim(v) || "").split(/\s+/);
             for (i = 0; i < l; i++ ) {
                 k = this[i];
-                if (k.nodeType === 1 && k.className) {
-                    var className = (" " + k.className + " ");
-                    for (var c = 0, cl = classNames.length; c < cl; c++) {
-                        className = className.replace(" " + classNames[c] + " ", " ");
+                if (k.classList) {
+                    k.classList.remove(v);
+                }else {
+                    if (k.nodeType === 1 && k.className) {
+                        k.className = this.trim((' ' + k.className + ' ').replace(' ' + v + ' ', ' '));
                     }
-                    k.className = this.trim(className);
                 }
             }
             return this;

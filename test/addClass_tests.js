@@ -30,10 +30,5 @@ var addClass_Tests = new YAHOO.tool.TestCase({
 		TG('#'+this.divId).addClass('my-div');
 		TG('#'+this.divId).addClass('my-div');
         YAHOO.util.Assert.areEqual( "my-div", TG('#'+this.divId)[0].className, "One class expected" );
-
-        //add more cls one time
-		TG('#'+this.divId)[0].className = '';
-		TG('#'+this.divId).addClass(' cls1 cls2 ');
-        YAHOO.util.Assert.areEqual( "cls1 cls2", TG('#'+this.divId)[0].className, "" );
     }
 });

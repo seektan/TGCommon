@@ -60,6 +60,14 @@ Don't wanna TG ? it is OK, you can use another keyword :
 - open `tgcommon.js` or `tgcommon.min.js` and move to the bottom of the file
 - change the second argument (default: 'TG') to whatever you like. such as '$$'. And then you can use `$$(...)` instead of `TG(...)`
 
+## Update
+
+### 2014-06-03
+
+- use Native trim if supported
+- use classList in modern browser
+- addClass/removeClass only takes one className (the arguments should not contains space)
+
 ## MIT License
 
 Copyright (C) 2014 ikitty

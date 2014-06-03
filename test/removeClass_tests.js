@@ -22,16 +22,9 @@ var removeClass_Tests = new YAHOO.tool.TestCase({
         el.removeClass(this.divCls);
         YAHOO.util.Assert.areEqual( "", el[0].className, "class shoule be cleared" );
 
-        el[0].className = ' clsR1 clsR2 clsR3 ';
+        el[0].className = 'clsR1 clsR2 clsR3';
         el.removeClass('clsR2');
         YAHOO.util.Assert.areEqual( "clsR1 clsR3", el[0].className);
-    },
-    
-	testRemoveClassDouble: function () {
-        var el = TG('#' + this.divId);
-
-        el[0].className = ' clsR1 clsR2 clsR3 ';
-        el.removeClass('clsR2 clsR3');
-        YAHOO.util.Assert.areEqual( "clsR1", el[0].className);
     }
+    
 });
