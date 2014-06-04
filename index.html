@@ -1,89 +1,140 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Tgcommon : A common useful javascript lib for TG" />
+<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<style type="text/css" media="screen">
+* {margin:0;padding:0;list-style:none;}
+body {font:400 14px/28px verdana;color:#333;padding:20px 40px;}
+h1 {font:400 18px/50px "Microsoft YaHei";}
+.bold {font-weight:700;}
+.red {color:#f20 ;}
+.pink {color:pink;}
+.blue {color:#69f;}
+.green {color:green;}
+.ret {color:green;border:1px solid #ccc;margin-top:20px;padding:10px;background-color:#f5f5f5;}
+input {display:inline-block;margin:10px 0px 5px;padding:5px 10px;font-family:courier new;font-size:16px;}
+</style>
+<title>Tgcommon</title>
+</head>
+    <body>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Tgcommon : A common useful javascript lib for TG" />
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+            <a id="forkme_banner" href="https://github.com/ikitty/TGCommon">View on GitHub</a>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Tgcommon</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ikitty/TGCommon">View on GitHub</a>
-
-          <h1 id="project_title">Tgcommon</h1>
-          <h2 id="project_tagline">A common useful javascript lib for TG</h2>
+            <h1 id="project_title">Tgcommon</h1>
+            <h2 id="project_tagline">A common useful javascript lib for TG</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ikitty/TGCommon/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ikitty/TGCommon/tarball/master">Download this project as a tar.gz file</a>
+            <a class="zip_download_link" href="https://github.com/ikitty/TGCommon/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/ikitty/TGCommon/tarball/master">Download this project as a tar.gz file</a>
             </section>
-        </header>
-    </div>
+            </header>
+        </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>&lt;!DOCTYPE html&gt;
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <h1>TGCommon Tests </h1>
+                <p class="cls ">p.cls tag</p>
+                <p class="cls">p.cls tag</p>
+                <p class="bold">p.bold tag</p>
+                <input type="button" id="btnAC" value="$$('p').addClass('red')"/>&nbsp;&nbsp;
+                <input type="button" id="btnRC" value="$$('p').removeClass('red')"/>
+                <ul>
+                    <li>- li tag </li>
+                    <li>- li tag </li>
+                    <li>- li tag </li>
+                </ul>
+                <input type="button" id="btnACAC" value="$$('li').addClass('blue').addClass('bold')"/>&nbsp;&nbsp;<br />
+                <input type="button" id="btnRCRC" value="$$('li').removeClass('blue').removeClass('bold')"/>
+                <br />
 
-</p>
-TGcommon Tests
-    * {margin:0;padding:0;list-style:none;}
-    body {font:400 14px/28px verdana;color:#333;padding:20px 40px;}
-    h1 {font:400 18px/50px "Microsoft YaHei";}
-    .bold {font-weight:700;}
-    .red {color:#f20 ;}
-    .pink {color:pink;}
-    .blue {color:#69f;}
-    .green {color:green;}
-    .ret {color:green;border:1px solid #ccc;margin-top:20px;padding:10px;background-color:#f5f5f5;}
-    input {display:inline-block;margin:10px 0px 5px;padding:5px 10px;font-family:courier new;font-size:16px;}
-<p>
-</p>
+                <span class="first">span.first tag</span><br />
+                <span>span tag</span><br />
+                <span>span tag</span><br />
+                <a target="_blank" class="linkA first" href="#">a.linkA.first tag</a><br />
+                <a target="_blank" class="linkB" href="#">a.linkB tag</a>
+                <br />
+                <input type="button" id="btnAC4" value="$$('.first').addClass('pink').addClass('bold')"/><br />
+                <input type="button" id="btnAC2" value="$$('span.first').removeClass('pink').addClass('green')"/><br />
+                <input type="button" id="btnAC3" value="$$($$('span')[2]).addClass('blue')"/><br />
+                <input type="button" id="btnHide" value="$$($$('span')[1]).hide()"/><br />
 
-<h1>
-<a name="tgcommon-tests-" class="anchor" href="#tgcommon-tests-"><span class="octicon octicon-link"></span></a>TGCommon Tests </h1>
+                <div id="ret" class="ret"></div>
+            </section>
+        </div>
 
-<p>p.cls tag</p>
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+            <p class="copyright">Tgcommon maintained by <a href="https://github.com/ikitty">ikitty</a></p>
+            <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+            </footer>
+        </div>
 
-<p>p.cls tag</p>
+        <script src="tgcommon.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            //just for test
+            var $$ = TG ;
 
-<p>p.bold tag</p>
+            $$('#btnAC')[0].onclick = function () {
+                $$('p').addClass('red');
+            }
+            $$('#btnRC')[0].onclick = function () {
+                $$('p').removeClass('red');
+            }
+            $$('#btnACAC')[0].onclick = function () {
+                $$('li').addClass('blue').addClass('bold');
+            }
+            $$('#btnRCRC')[0].onclick = function () {
+                $$('li').removeClass('blue').removeClass('bold');
+            }
+            $$('#btnAC2')[0].onclick = function () {
+                $$('span.first').removeClass('pink').addClass('green');
+            }
+            $$('#btnAC3')[0].onclick = function () {
+                $$($$('span')[2]).addClass('blue');
+            }
+            $$('#btnAC4')[0].onclick = function () {
+                $$('.first').addClass('pink').addClass('bold');
+            }
+            $$('#btnHide')[0].onclick = function () {
+                $$($$('span')[1]).hide();
+            }
 
-<p>  
-</p>
 
-<ul>
-<li>- li tag </li>
-    <li>- li tag </li>
-    <li>- li tag </li>
-</ul><p>  <br><br></p>
+            $$(function () {
+                $$('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 1 <br>'   ;
+            });
+            $$(function () {
+                $$('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 2 <br>'   ;
+            });
+            $$(function () {
+                $$('#ret')[0].innerHTML += 'DOM Content loaded, invoke callback 3 <br>'   ;
+            });
 
-<p>span.first tag<br>span tag<br>span tag<br><a target="_blank" href="#">a.linkA.first tag</a><br><a target="_blank" href="#">a.linkB tag</a>
-<br><br><br><br><br></p>
+            $$.addEvent(window, 'load', function () {
+                $$('#ret')[0].innerHTML += 'window loaded<br>'   ;
+                $$('#ret')[0].innerHTML += $$.isIE6 && 'Terrible, your browser is IE6' || 'Nice, your browser is not IE6'   ;
 
-<div></div>
+                $$.loadjs("http://ossweb-img.qq.com/images/js/title.js", function(){
+                    $$('#ret')[0].innerHTML += '<br>Push title into Page'   ;
+                    if(typeof(ostb_int) == 'function') {
+                        ostb_int();
+                        $$('#ost_box')[0].style.opacity = '.3';
+                    }
+                });
+            })
 
-<p></p>
-      </section>
-    </div>
+        </script>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Tgcommon maintained by <a href="https://github.com/ikitty">ikitty</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
 
-    
 
-  </body>
+    </body>
 </html>
+
