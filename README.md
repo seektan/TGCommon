@@ -36,11 +36,11 @@ then you can use `TG` get DOM Object or do something directly:
 
 ## Supported Methods
 
-- hasClass()
-- addClass()
-- removeClass()
-- show()
-- hide()
+- TG.hasClass()
+- TG.addClass()
+- TG.removeClass()
+- TG.show()
+- TG.hide()
 - TG.isIE6
 - TG.addEvent(window, 'load', callback)
 - TG.loadjs(url[, callback[, charset]])
