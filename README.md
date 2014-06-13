@@ -3,7 +3,7 @@ TGCommon
 
 A common Javascript lib including some useful method , jQuery compatible syntax and work well in majority browser , feel free to use it. 
 
-## How to use
+## How to use ?
 
 First include it in your webpage
 
