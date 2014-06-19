@@ -68,6 +68,10 @@ Don't wanna TG ? it is OK, you can use another keyword :
 - use classList in modern browser
 - addClass/removeClass only takes one className (the arguments should not contains space)
 
+### 2014-06-19
+
+- charset problem in IE . set charset first , then set src 
+
 ## MIT License
 
 Copyright (C) 2014 ikitty

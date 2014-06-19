@@ -154,8 +154,8 @@
         ,loadjs: function (url, cb, c) {
             var _head = document.getElementsByTagName("head")[0] || document.documentElement,
                 _script = document.createElement("script");
-            _script.src = url;	
             c && (_script.charset = c );
+            _script.src = url;	
             if (cb) {
                 if (_script.addEventListener) {
                     _script.addEventListener('load', cb, false);
