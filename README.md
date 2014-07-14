@@ -72,6 +72,10 @@ Don't wanna TG ? it is OK, you can use another keyword :
 
 - charset problem in IE . set charset first , then set src 
 
+### 2014-07-14
+
+- Fixbug for selector "tag.className" in IE7-
+
 ## MIT License
 
 Copyright (C) 2014 ikitty

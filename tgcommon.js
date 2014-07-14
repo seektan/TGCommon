@@ -35,7 +35,7 @@
                                 el = document.getElementsByTagName(tag),
                                 ret = [];
                             for (var i = 0, k ; k = el[i] ; i++ ) {
-                                (k.className.indexOf(this.trim(m[3])) > -1) && ret.push(k);
+                                ((' ' + k.className + ' ').indexOf(' ' + this.trim(m[3]) + ' ') > -1) && ret.push(k);
                             }
                             this.merge(this, ret);
                         }
