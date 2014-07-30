@@ -78,7 +78,7 @@ Don't wanna TG ? it is OK, you can use another keyword :
 
 ### 2014-07-30
 
-- supporting find elments in specify parentNode, `TG('div.cls', document.getElementById('wrap')`
+- supporting find elments in specify parentNode, `TG('div.cls', document.getElementById('wrap'))`
 
 ## MIT License
 
