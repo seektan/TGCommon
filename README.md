@@ -76,6 +76,10 @@ Don't wanna TG ? it is OK, you can use another keyword :
 
 - Fixbug for selector "tag.className" in IE7-
 
+### 2014-07-30
+
+- supporting find elments in specify parentNode, `TG('div.cls', document.getElementById('wrap')`
+
 ## MIT License
 
 Copyright (C) 2014 ikitty
