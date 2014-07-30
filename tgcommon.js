@@ -1,7 +1,8 @@
 (function (window, output) {
     //supported format: #id || tag.cls || tag || .cls || DOMObject || nodeListObject
-    var TG = function(s) {
-        return new TG.fn.init(s);
+    //you can find elements in specify parentNode
+    var TG = function(s, parentNode) {
+        return new TG.fn.init(s, parentNode);
     };
     TG.extend = function (o) {
         for (var i in o) {
@@ -10,29 +11,33 @@
     };
     var rcls = /^(?:([^.]+)|(.+)?\.(.+))$/ ;
     TG.fn = {
-        init: function(s) {
+        init: function(s, parentNode) {
             if (!s) {
                 return this ;
             }
             //handle TG('#id') , TG('tag.cls'), TG('tag') , TG('.cls')
             if (typeof s == 'string') {
+                var parentNode = parentNode || document ;
+
                 if (!!document.querySelectorAll) {
-                    this.merge(this, document.querySelectorAll(s));
+                    this.merge(this, parentNode.querySelectorAll(s));
                 }else {
                     if (s.indexOf('#') +1) {
                         this[0] = document.getElementById(this.trim(s).replace('#', ''));
                         this.length = 1;
-                    //handle  TG('tag.cls'), TG('tag') , TG('.cls')
+                    //handle  TG('tag') ,TG('tag.cls'),  TG('.cls')
+                    //handle  TG('tag', parentNode) ,TG('tag.cls', parentNode),  TG('.cls', parentNode)
                     }else {
-                        var m = rcls.exec(s);
+                        var m = rcls.exec(s) ;
                         if (!m) {
                             return this ;
                         }
+                            console.log(parentNode) ;
                         if (m[1]) {
-                            this.merge(this, document.getElementsByTagName(m[1]))
+                            this.merge(this, parentNode.getElementsByTagName(m[1]))
                         }else if (m[3]){
                             var tag = m[2] || '*' ,
-                                el = document.getElementsByTagName(tag),
+                                el = parentNode.getElementsByTagName(tag),
                                 ret = [];
                             for (var i = 0, k ; k = el[i] ; i++ ) {
                                 ((' ' + k.className + ' ').indexOf(' ' + this.trim(m[3]) + ' ') > -1) && ret.push(k);

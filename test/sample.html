@@ -3,7 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <title>TGcommon Tests</title>
-<script src="../tgcommon.min.js" type="text/javascript"></script>
+<script src="../tgcommon.js" type="text/javascript"></script>
 <style type="text/css" media="screen">
     * {margin:0;padding:0;list-style:none;}
     body {font:400 14px/28px verdana;color:#333;padding:20px 40px;}
@@ -20,10 +20,13 @@
 <body>
 
 <h1>TGCommon Tests </h1>
-<p class="cls ">p.cls tag</p>
-<p class="cls">p.cls tag</p>
+<div id="pWrap">
+    <p class="cls ">p.cls tag in #pWrap</p>
+    <p class="cls">p.cls tag in #pWrap</p>
+</div>
 <p class="bold">p.bold tag</p>
-<input type="button" id="btnAC" value="$$('p').addClass('red')"/>&nbsp;&nbsp;
+
+<input type="button" id="btnAC" value="$$('p.cls', $$('#pWrap')[0]).addClass('red')"/>&nbsp;&nbsp;
 <input type="button" id="btnRC" value="$$('p').removeClass('red')"/>
 <ul>
     <li>- li tag </li>
@@ -52,7 +55,7 @@
     var $$ = TG ;
 
     $$('#btnAC')[0].onclick = function () {
-        $$('p').addClass('red');
+        $$('p.cls', $$('#pWrap')[0]).addClass('red');
     }
     $$('#btnRC')[0].onclick = function () {
         $$('p').removeClass('red');
