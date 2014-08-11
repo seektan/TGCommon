@@ -32,7 +32,6 @@
                         if (!m) {
                             return this ;
                         }
-                            console.log(parentNode) ;
                         if (m[1]) {
                             this.merge(this, parentNode.getElementsByTagName(m[1]))
                         }else if (m[3]){
