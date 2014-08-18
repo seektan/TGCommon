@@ -26,7 +26,7 @@
 </div>
 <p class="bold">p.bold tag</p>
 
-<input type="button" id="btnAC" value="$$('p.cls', $$('#pWrap')[0]).addClass('red')"/>&nbsp;&nbsp;
+<input type="button" id="btnAC" value="$$('p.cls', 'pWrap')[0]).addClass('red')"/>&nbsp;&nbsp;
 <input type="button" id="btnRC" value="$$('p').removeClass('red')"/>
 <ul>
     <li>- li tag </li>
@@ -55,7 +55,7 @@
     var $$ = TG ;
 
     $$('#btnAC')[0].onclick = function () {
-        $$('p.cls', $$('#pWrap')[0]).addClass('red');
+        $$('p.cls', '#pWrap').addClass('red');
     }
     $$('#btnRC')[0].onclick = function () {
         $$('p').removeClass('red');

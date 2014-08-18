@@ -1,8 +1,8 @@
 (function (window, output) {
     //supported format: #id || tag.cls || tag || .cls || DOMObject || nodeListObject
     //you can find elements in specify parentNode
-    var TG = function(s, parentNode) {
-        return new TG.fn.init(s, parentNode);
+    var TG = function(s, parentNodeId) {
+        return new TG.fn.init(s, parentNodeId);
     };
     TG.extend = function (o) {
         for (var i in o) {
@@ -11,13 +11,13 @@
     };
     var rcls = /^(?:([^.]+)|(.+)?\.(.+))$/ ;
     TG.fn = {
-        init: function(s, parentNode) {
+        init: function(s, parentNodeId) {
             if (!s) {
                 return this ;
             }
-            //handle TG('#id') , TG('tag.cls'), TG('tag') , TG('.cls')
+            //handle TG('#id') , TG('tag.cls'), TG('tag') , TG('.cls'), TG('.cls', 'id')
             if (typeof s == 'string') {
-                var parentNode = parentNode || document ;
+                var parentNode = parentNodeId ? (document.getElementById(parentNodeId) || document) : document ;
 
                 if (!!document.querySelectorAll) {
                     this.merge(this, parentNode.querySelectorAll(s));
