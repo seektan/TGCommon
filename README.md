@@ -80,6 +80,13 @@ Don't wanna TG ? it is OK, you can use another keyword :
 
 - supporting find elments in specify parentNode, `TG('div.cls', document.getElementById('wrap'))`
 
+### 2014-11-30
+
+- extend TG.extend  
+- detect browser using UA test
+- Add loading some module ,such as: tilte, statistics. thanks to [Jacob](https://github.com/seektan)
+- Add some common method ,such as: insertFlash. thanks to [Jacob](https://github.com/seektan)
+
 ## MIT License
 
 Copyright (C) 2014 ikitty

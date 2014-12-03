@@ -3,7 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <title>TGcommon Tests</title>
-<script src="../tgcommon.js" type="text/javascript"></script>
+<script src="../tgcommon.js?notitle=1" type="text/javascript"></script>
 <style type="text/css" media="screen">
     * {margin:0;padding:0;list-style:none;}
     body {font:400 14px/28px verdana;color:#333;padding:20px 40px;}
@@ -92,15 +92,7 @@
 
     $$.addEvent(window, 'load', function () {
         $$('#ret')[0].innerHTML += 'window loaded<br>'   ;
-        $$('#ret')[0].innerHTML += $$.isIE6 && 'Terrible, your browser is IE6' || 'Nice, your browser is not IE6'   ;
-
-        $$.loadjs("http://ossweb-img.qq.com/images/js/title.js", function(){
-            $$('#ret')[0].innerHTML += '<br>Push title into Page'   ;
-            if(typeof(ostb_int) == 'function') {
-                ostb_int();
-                $$('#ost_box')[0].style.opacity = '.3';
-            }
-        });
+        $$('#ret')[0].innerHTML += $$.isIE6 && '<p class="red">Terrible, your browser is IE6</p>' || 'Nice, your browser is not IE6'   ;
     })
 
 </script>
