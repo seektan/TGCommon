@@ -361,19 +361,9 @@ TG.extend({
 		return out;
 	},
 	showLayer : function(opt){
-		var cfg = {
-				id : null,
-				bgcolor : "#000",
-				opacity : 60,
-				onPopupCallback : function(){},
-				onCloseCallback : function(){}
-			};
-
-		TG.extend(opt,cfg);
-
 		typeof(showDialog)=='undefined' ? TG.loadjs("http://ossweb-img.qq.com/images/js/comm/showDialog.min.js",_sDialog) : _sDialog();
 		function _sDialog(){
-			showDialog.show(cfg);
+			showDialog.show(opt);
 		}
 	}
 });
