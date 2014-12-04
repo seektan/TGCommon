@@ -262,10 +262,10 @@
 
 //load topbar & statistics
 (function(){
-	//get Params ,convert to json
-	function getSelfParams() {
-		var scripts = document.getElementsByTagName('script');
-			scripts = scripts[scripts.length-1];
+    //get Params ,convert to json
+    function getSelfParams() {
+        var scripts = document.getElementsByTagName('script');
+            scripts = scripts[scripts.length-1];
         var pa = scripts.src.split("?").pop().split("&");
         var p = {};
         for(var j=0; j<pa.length; j++) {
@@ -273,97 +273,97 @@
             p[kv[0]] = kv[1];
         }
         return p;
-	}
+    }
 
-	var _cfgParams = getSelfParams();
+    var _cfgParams = getSelfParams();
 
-	//append topbar
+    //append topbar
     if (!TG.isMobile && !Number(_cfgParams.notitle)) {
         TG.loadjs("http://ossweb-img.qq.com/images/js/title.js",function(){
             if(typeof(ostb_int) == 'function') ostb_int();
         });
     }
 
-	//statistics
-	function _ping_tcss_ied(){
-		TG.loadjs("http://pingjs.qq.com/ping_tcss_ied.js",function(){
-			if(typeof(pgvMain) == 'function') pgvMain();
-		});
-	}
-	function _tajs(qn){
-		TG.loadjs("http://tajs.qq.com/stats?sId="+qn, _ping_tcss_ied);
-	}
-	
-	_cfgParams.ta ? _tajs(_cfgParams.ta) : _ping_tcss_ied();
+    //statistics
+    function _ping_tcss_ied(){
+        TG.loadjs("http://pingjs.qq.com/ping_tcss_ied.js",function(){
+            if(typeof(pgvMain) == 'function') pgvMain();
+        });
+    }
+    function _tajs(qn){
+        TG.loadjs("http://tajs.qq.com/stats?sId="+qn, _ping_tcss_ied);
+    }
+    
+    _cfgParams.ta ? _tajs(_cfgParams.ta) : _ping_tcss_ied();
 })();
 
 //common unit
 TG.extend({
-	insertFlash : function(opt){
-		//parse Params
-		var cfg = {
-				id : null,
-				url : null,
-				width : 300,
-				height : 200,
-				version : "9.0.0",
-				expressInstall : "expressInstall.swf",
-				flashvars : {},
-				params : {},
-				attributes : {},
-				callback : function(){}
-			};
+    insertFlash : function(opt){
+        //parse Params
+        var cfg = {
+                id : null,
+                url : null,
+                width : 300,
+                height : 200,
+                version : "9.0.0",
+                expressInstall : "expressInstall.swf",
+                flashvars : {},
+                params : {},
+                attributes : {},
+                callback : function(){}
+            };
 
-		TG.extend(opt,cfg);
+        TG.extend(opt,cfg);
 
-		//load swfobject
-		typeof(swfobject)!=="object" ?	TG.loadjs("http://ossweb-img.qq.com/images/js/swfobject.js",_insetFs) : _insetFs();
-		
-		//embed SWF
-		function _insetFs(){
-			swfobject.embedSWF(cfg.url, cfg.id, cfg.width, cfg.height, cfg.version, cfg.expressInstall, cfg.flashvars, cfg.params, cfg.attributes, cfg.callback);
-		}
-	},
-	insertQQVideo : function(opt){
-		//parse Params
-		var cfg = {
-				modId : null,
-				vid : null,
-				width : 300,
-				height : 200,
-				flashWmode : "transparent",
-				autoplay : 0,
-				vodFlashSkin : "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf",
-				vodFlashExtVars:{showend: 0}
-			},
-			out = null;
+        //load swfobject
+        typeof(swfobject)!=="object" ?    TG.loadjs("http://ossweb-img.qq.com/images/js/swfobject.js",_insetFs) : _insetFs();
+        
+        //embed SWF
+        function _insetFs(){
+            swfobject.embedSWF(cfg.url, cfg.id, cfg.width, cfg.height, cfg.version, cfg.expressInstall, cfg.flashvars, cfg.params, cfg.attributes, cfg.callback);
+        }
+    },
+    insertQQVideo : function(opt){
+        //parse Params
+        var cfg = {
+                modId : null,
+                vid : null,
+                width : 300,
+                height : 200,
+                flashWmode : "transparent",
+                autoplay : 0,
+                vodFlashSkin : "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf",
+                vodFlashExtVars:{showend: 0}
+            },
+            out = null;
 
-		TG.extend(opt,cfg);
+        TG.extend(opt,cfg);
 
-		//load tvp player
-		typeof(tvp)==="undefined" ?	TG.loadjs("http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js",_insetQv,"utf-8") : _insetQv();
-		
-		//insert video
-		function _insetQv(){	
-			if(typeof(tvp)!=="undefined"){	
-				var _vd = "tvp"+(+new Date());
-				if(typeof _va === "undefined"){var _va = [];};
-				_va[_vd] = new tvp.VideoInfo();
-				_va[_vd].setVid(cfg.vid);
-				var player =new tvp.Player();
-				cfg.video = _va[_vd];
-				player.create(cfg);
-				out = player;
-			}else{
-				TG.insertFlash(cfg.modId,'http://static.video.qq.com/TPout.swf?vid='+cfg.vid+'&auto='+cfg.autoplay+'&skin='+cfg.vodFlashSkin,cfg.width,cfg.height);
-			}
-		};
-		return out;
-	},
-	showLayer : function(opt){
-		typeof(showDialog)=='undefined' ? TG.loadjs("http://ossweb-img.qq.com/images/js/comm/showDialog.min.js",_sDialog) : _sDialog();
-		function _sDialog(){
-			showDialog.show(opt);
-		}
-	}
+        //load tvp player
+        typeof(tvp)==="undefined" ?    TG.loadjs("http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js",_insetQv,"utf-8") : _insetQv();
+        
+        //insert video
+        function _insetQv(){    
+            if(typeof(tvp)!=="undefined"){    
+                var _vd = "tvp"+(+new Date());
+                if(typeof _va === "undefined"){var _va = [];};
+                _va[_vd] = new tvp.VideoInfo();
+                _va[_vd].setVid(cfg.vid);
+                var player =new tvp.Player();
+                cfg.video = _va[_vd];
+                player.create(cfg);
+                out = player;
+            }else{
+                TG.insertFlash(cfg.modId,'http://static.video.qq.com/TPout.swf?vid='+cfg.vid+'&auto='+cfg.autoplay+'&skin='+cfg.vodFlashSkin,cfg.width,cfg.height);
+            }
+        };
+        return out;
+    },
+    showLayer : function(opt){
+        typeof(showDialog)=='undefined' ? TG.loadjs("http://ossweb-img.qq.com/images/js/comm/showDialog.min.js",_sDialog) : _sDialog();
+        function _sDialog(){
+            showDialog.show(opt);
+        }
+    }
 });
